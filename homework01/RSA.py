@@ -13,12 +13,9 @@ def is_prime(n):
     """
     divisor = 1
     for i in range(2, n):
-        if n % i == 0:
-            divisor = i
-    if divisor == 1:
-        return True
-    else:
-        return False
+        if (n % i == 0):
+            return False
+    return True
 
 
 def gcd(a, b):
@@ -29,11 +26,12 @@ def gcd(a, b):
     >>> gcd(3, 7)
     1
     """
-    while a % b != 0:
-        c = a % b
-        a = b
-        b = c
-        return b
+    while a != 0 and b != 0:
+        if a > b:
+            a = a % b
+        else:
+            b = b % a
+    return a + b
 
 
 def multiplicative_inverse(e, phi):
@@ -117,4 +115,4 @@ if __name__ == '__main__':
     print(''.join(map(lambda x: str(x), encrypted_msg)))
     print("Decrypting message with public key ", public, " . . .")
     print("Your message is:")
-print(decrypt(public, encrypted_msg))
+    print(decrypt(public, encrypted_msg))
